@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <BmiCalculator/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import BmiCalculator from './components/BmiCalculator.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    BmiCalculator,
   },
 };
 </script>
