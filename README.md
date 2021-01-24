@@ -1,5 +1,7 @@
 # bmi-calculator
 
+This app calculates the BMI (body mass index) (https://en.wikipedia.org/wiki/Body_mass_index) following the formula body mass divided by the square of the body height
+
 ## Project setup
 ```
 yarn install
@@ -24,6 +26,3 @@ yarn test:unit
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
