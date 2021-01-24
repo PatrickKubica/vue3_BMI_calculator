@@ -29,37 +29,20 @@
 </template>
 
 <script>
+import useBmiCalculator from '@/composables/useBmiCalculator';
+
 export default {
-  name: 'BmiCalculator',
-  data() {
+  setup() {
+    const {
+      height, weight, calculatedBmi, hasError,
+    } = useBmiCalculator();
+
     return {
-      height: 166,
-      weight: 71,
+      height,
+      weight,
+      calculatedBmi,
+      hasError,
     };
-  },
-  computed: {
-    calculatedBmi() {
-      if (!this.isInputValid()) {
-        return '';
-      }
-      const height = this.height / 100;
-      const bmi = this.weight / (height * height);
-      return bmi.toFixed(1);
-    },
-    hasError() {
-      if (this.isInputValid()) {
-        return false;
-      }
-      return true;
-    },
-  },
-  methods: {
-    isInputValid() {
-      if (Math.sign(this.height) === 1 && Math.sign(this.weight) === 1) {
-        return true;
-      }
-      return false;
-    },
   },
 };
 </script>
