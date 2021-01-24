@@ -29,13 +29,18 @@
 </template>
 
 <script>
-import useBmiCalculator from '@/composables/useBmiCalculator';
+import { ref } from 'vue';
+import useCalculateBmi from '@/composables/useCalculateBmi';
+import useValidatePositiveNumbers from '@/composables/useValidatePositiveNumbers';
 
 export default {
   setup() {
-    const {
-      height, weight, calculatedBmi, hasError,
-    } = useBmiCalculator();
+    const height = ref(166);
+    const weight = ref(71);
+
+    const { hasError } = useValidatePositiveNumbers(height, weight);
+
+    const { calculatedBmi } = useCalculateBmi(height, weight, hasError);
 
     return {
       height,
