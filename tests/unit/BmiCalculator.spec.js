@@ -15,8 +15,42 @@ describe('BmiCalculator.vue', () => {
     const wrapper = mount(BmiCalculator);
 
     await wrapper.find('#height').setValue(194);
-    await wrapper.find('#weight').setValue(88);
+    await wrapper.find('#weight').setValue(89);
 
     expect(wrapper.find('#result').text()).toBe('BMI: 23');
+  });
+
+  it('shows error when input invalid', async () => {
+    const wrapper = mount(BmiCalculator);
+
+    await wrapper.find('#height').setValue(-194);
+    await wrapper.find('#weight').setValue(89);
+
+    expect(wrapper.find('#result').text()).toBe('BMI:');
+    expect(wrapper.find('.alert-danger').text()).toBe('height and weight need to be positive numbers');
+
+    await wrapper.find('#height').setValue(194);
+    await wrapper.find('#weight').setValue(-89);
+
+    expect(wrapper.find('#result').text()).toBe('BMI:');
+    expect(wrapper.find('.alert-danger').text()).toBe('height and weight need to be positive numbers');
+
+    await wrapper.find('#height').setValue(-194);
+    await wrapper.find('#weight').setValue(-89);
+
+    expect(wrapper.find('#result').text()).toBe('BMI:');
+    expect(wrapper.find('.alert-danger').text()).toBe('height and weight need to be positive numbers');
+
+    await wrapper.find('#height').setValue(0);
+    await wrapper.find('#weight').setValue(89);
+
+    expect(wrapper.find('#result').text()).toBe('BMI:');
+    expect(wrapper.find('.alert-danger').text()).toBe('height and weight need to be positive numbers');
+
+    await wrapper.find('#height').setValue('test');
+    await wrapper.find('#weight').setValue(-89);
+
+    expect(wrapper.find('#result').text()).toBe('BMI:');
+    expect(wrapper.find('.alert-danger').text()).toBe('height and weight need to be positive numbers');
   });
 });
