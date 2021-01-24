@@ -28,7 +28,8 @@ export default {
         return '';
       }
       const height = this.height / 100;
-      return parseInt(this.weight / (height * height), 10);
+      const bmi = this.weight / (height * height);
+      return bmi.toFixed(1);
     },
     hasError() {
       if (this.isInputValid()) {

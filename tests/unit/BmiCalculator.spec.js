@@ -17,7 +17,7 @@ describe('BmiCalculator.vue', () => {
     await wrapper.find('#height').setValue(194);
     await wrapper.find('#weight').setValue(89);
 
-    expect(wrapper.find('#result').text()).toBe('BMI: 23');
+    expect(wrapper.find('#result').text()).toBe('BMI: 23.6');
   });
 
   it('shows error when input invalid', async () => {
