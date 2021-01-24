@@ -6,7 +6,7 @@
     <br />
     <label for="weight">body weight in kilogram </label>
     <input type="number" v-model="weight" id="weight" />
-    <p>BMI: {{ calculatedBmi }}</p>
+    <p id="result">BMI: {{ calculatedBmi }}</p>
   </div>
 </template>
 
